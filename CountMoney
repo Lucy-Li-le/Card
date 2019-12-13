@@ -1,0 +1,93 @@
+/**
+ * 
+ */
+/**
+ * @author The Dog Eggs
+ *
+ */
+package com.games;
+
+import java.util.Scanner;
+/**
+ * @author The Dog Eggs
+ *
+ */
+public class CountMoney {
+	
+		/**	 
+		   ----斗地主规则  
+		1.默认三人当中有一个地主， 	
+		2.根据三人当中有一人地主  地主赢 地主加分 其他两方 减一分*倍数  地主输 减2分   其他两位玩家加一分 *倍数 
+		3.每游戏一局进行实时计算一次账户金额，，
+			---使用方法 ：
+		 1.先每人充值一定数额的钱放在一个账户，后面盈利可以提现，输了就没了或者补。
+		 2. li，liu，tang代表三个角色 ，输入11代表地主是角色li,   输入21,代表角色liu是地主，输入31代表角色tang是地主。
+		 3.  可输入 第一位数字 代表  角色 123 ，第二个数字代表  
+		 4.  		 */
+	
+	public static void main(String[] args) {
+			 
+				int a=100;
+				int b=100;//各个角色的余额 
+				int c=100;
+				
+				while(true) {
+				System.out.println("\n"+"请输入地主代号"+"\n");
+						Scanner in=new Scanner(System.in);
+						int who=in.nextInt();
+						System.out.println("请输入倍数");
+						int s=in.nextInt();
+						int f=1;
+						int bs=1*s;//用于计算乘的倍数
+						int Dwin=2*s;//用于计算地主赢家
+						int DLose=2*s;//用于计算地主是输家
+						int lose=1*s;//用于计算非地主输家*倍数
+	 	 
+			switch (who){
+				case 11 :
+					a=a+Dwin;
+					b=b-lose;
+					c=c-lose;
+					System.out.println("\n"+"李：当前余额"+a+"元"+"\n" +"刘：当前余额为 "+b+"元"+"\n"	 +"唐：当前余额为"+c+"元");
+					break;
+					
+				case 10:
+					a=a-DLose;
+					b=b+bs;
+					c=c+bs;
+					System.out.println("\n"+"李：当前余额"+a+"元"+"\n" +"刘：当前余额为 "+b+"元"+"\n"	 +"唐：当前余额为"+c+"元");
+					break;
+					
+				case 21 :
+					b=b+Dwin;
+					a=a-lose;
+					c=c-1-lose;
+					System.out.println("\n"+"李：当前余额"+a+"元"+"\n" +"刘：当前余额为 "+b+"元"+"\n"	 +"唐：当前余额为"+c+"元");
+					break;
+					
+				case 20:
+					b=b-DLose;
+					a=a+bs;
+					c=c+lose;
+					System.out.println("\n"+"李：当前余额"+a+"元"+"\n" +"刘：当前余额为 "+b+"元"+"\n"	 +"唐：当前余额为"+c+"元");
+					break;	
+					
+				case 31: 
+					c=c+Dwin;
+					a=a-lose;
+					b=b-lose;
+					System.out.println("\n"+"李：当前余额"+a+"元"+"\n" +"刘：当前余额为 "+b+"元"+"\n"	 +"唐：当前余额为"+c+"元");
+					break;	
+					
+				case 30:	
+					c=c-DLose;
+					a=a+bs;
+					b=b+bs;
+					System.out.println("\n"+"李：当前余额"+a+"元"+"\n" +"刘：当前余额为 "+b+"元"+"\n"	 +"唐：当前余额为"+c+"元");
+					break;
+					
+			}//switch
+				}//while
+		}//args
+
+}//CountMoney
